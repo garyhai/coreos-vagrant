@@ -13,7 +13,7 @@ After setup is complete you will have a single CoreOS virtual machine running on
 2) Clone this project and get it running!
 
 ```
-git clone https://github.com/coreos/coreos-vagrant/
+git clone https://github.com/neulinx/coreos-vagrant/
 cd coreos-vagrant
 ```
 
@@ -81,10 +81,30 @@ Check out the [coreos-cloudinit documentation][coreos-cloudinit] to learn about 
 
 [coreos-cloudinit]: https://github.com/coreos/coreos-cloudinit
 
+You should add your own ssh key to user-data file to login CoreOS by ssh client without vagrant installation.
+
 #### Configuration
 
 The Vagrantfile will parse a `config.rb` file containing a set of options used to configure your CoreOS cluster.
 See `config.rb.sample` for more information.
+
+| Parameter Name | Default Value | Description |
+| -------------- | ------------- | ----------- |
+| num_instances | 1 | Count of CoreOS VM instances. IP address start from $private_ip. |
+| update_channel | "stable" | Channel of CoreOS release channels. |
+| instance_name_prefix | "core" | Prefix of instance name. Append "-%02d" to the prefix if more than 1 instance. |
+| image_version | "current" | Specify version of CoreOS image. |
+| enable_serial_logging | false | Output logs to serial port. |
+| private_ip | "172.17.8.100" | The start IP address for private network. |
+| public_ip | false | Start IP address for public networking. |
+| bridge | false | Network bridge interface for bridge type networking. |
+| dhcp | false | Enable DHCP client for public IP assignment. |
+| share_home | false | Mount home folder into CoreOS VM for share. |
+| vm_gui | false | Use old vb_xxx config variables when set. |
+| vm_memory | 1024 | Memory allocation for VM. Unit is MB. |
+| vm_cpus | 1 | CPU number for VM. |
+| shared_folders | {} | Host folders for share. |
+| forwarded_ports | {} | Ports to forward docker operations and data. |
 
 ## Cluster Setup
 
